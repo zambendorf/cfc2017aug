@@ -1,5 +1,13 @@
 # CFC Virtuosoハンズオン資料 (Aug 2017; @稲毛海岸) #
 
+## タイムテーブル ##
+
+|= 時間(分) =|= 項目 =|
+|  0 | RDFデータとVirtuosoの紹介 |
+| 30 | Virtuosoのインストールとサンプルデータのロード (ハンズオン) |
+| 60 | SPARQLの紹介 |
+| 90 | データ検索 (ハンズオン) |
+
 ## リンク ##
 * [Code For Chiba / Virtuosoハンズオン](http://www.wherevent.com/detail/Code-for-Chiba-%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%B5%81%E9%80%9A%E3%81%95%E3%81%9B%E3%82%8B%E3%81%AB%E3%81%AF%EF%BC%9F-Virtuoso-%E3%83%8F%E3%83%B3%E3%82%BA%E3%82%AA%E3%83%B3)
 * [AWS EC2文書](https://aws.amazon.com/jp/documentation/ec2/)
@@ -7,6 +15,8 @@
 * [Virtuoso Open-Source Edition](http://vos.openlinksw.com/owiki/wiki/VOS/)
 
 ## AWS設定 ##
+(事前準備？)
+
 ### キーペア作成
 * 安全な場所に保管
 ### セキュリティグループ作成
@@ -30,7 +40,7 @@
 
 ### ツールのインストール ###
 
-    sudo yum install gcc gmake autoconf automake libtool flex bison gperf gawk m4 make openssl-devel readline-devel wget
+    sudo yum install gcc gmake autoconf automake libtool flex bison gperf gawk m4 make openssl-devel readline-devel wget git
 
 ### インストール ###
 
@@ -54,6 +64,10 @@
 
 ## データのロード ##
 
+	cd /home/ec2-user/wrk
+    git clone https://github.com/zambendorf/cfc2017aug.git
+    cd /usr/local/var/lib/virtuoso/vsp
+    sudo ln -s /cfc2017aug/dat
 
 ## SPARQLによる検索 ##
 
