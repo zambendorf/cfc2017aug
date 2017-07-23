@@ -14,6 +14,7 @@
 * [AWS EC2文書](https://aws.amazon.com/jp/documentation/ec2/)
     * [SSH接続](http://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
 * [Virtuoso Open-Source Edition](http://vos.openlinksw.com/owiki/wiki/VOS/)
+    * [Bilk Loader](http://vos.openlinksw.com/owiki/wiki/VOS/VirtBulkRDFLoaderExampleSingle)
 
 ## AWS設定 ##
 (事前準備？)
@@ -67,8 +68,12 @@
 
 	cd /home/ec2-user/wrk
     git clone https://github.com/zambendorf/cfc2017aug.git
-    cd /usr/local/var/lib/virtuoso/vsp
+    cd /usr/local/var/lib/virtuoso/db
     sudo ln -s /cfc2017aug/dat
+	vi yagoStatistics.ext.graph # http://cfc2017.test#
+
+    isql localhost:1111 dba dba
+    LOAD 'src/rdfloader.sql';
 
 ## SPARQLによる検索 ##
 

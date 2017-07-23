@@ -1,0 +1,13 @@
+sparql load <file://dat/yagoStatistics.tsv> into <test>;
+
+ld_dir ('dat', 'yagoStatistics.tsv', 'http://cfc2017.test#');
+rdf_loader_run ();
+
+SPARQL
+SELECT * 
+FROM <http://cfc2017.test#>
+WHERE 
+  {
+    ?s ?p ?o
+  }
+;
