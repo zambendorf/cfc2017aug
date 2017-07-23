@@ -20,7 +20,7 @@
 * セキュリティグループ: 上記作成したSGを選択
 
 ## Virtuoso設定 ##
-* コードをダウンロード (3m 22s)
+### コードをダウンロード (3m 22s) ###
 
     mkdir wrk
     cd wrk
@@ -28,33 +28,35 @@
     tar zxvf virtuoso-opensource-7.2.4.2.tar.gz
     cd virtuoso-opensource-7.2.4.2
 
-* ツールのインストール
+### ツールのインストール ###
 
     sudo yum install gcc gmake autoconf automake libtool flex bison gperf gawk m4 make openssl-devel readline-devel wget
 
-* インストール
+### インストール ###
 
     ./configure --prefix=/usr/local/ -with-readline
     make              # 8-9m
     sudo make install # 4s
 
-* 起動
+#### 起動 ####
 
     cd /usr/local/var/lib/virtuoso/db/
     sudo chown -R ec2-user .
     virtuoso-t -df
 
-** webサーバに接続
+#### webサーバに接続 ####
 
     http://<インシタンスのグローバルアドレス>:8890/
 
-** isqlに接続
+#### isqlに接続 ####
 
     isql localhost:1111 dba dba
 
-* データのロード
+## データのロード ##
 
-* SPARQLによる検索
+
+## SPARQLによる検索 ##
+
 
 ----
 Kiyoshi Nitta <knitta@acm.org>
