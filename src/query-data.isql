@@ -1,0 +1,9 @@
+SPARQL
+SELECT * 
+FROM <http://cfc2017.test#>
+WHERE 
+  {
+    ?s ?p ?o
+  }
+;
+

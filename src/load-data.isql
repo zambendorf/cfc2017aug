@@ -1,13 +1,3 @@
-sparql load <file://dat/yagoStatistics.tsv> into <test>;
-
-ld_dir ('dat', 'yagoStatistics.tsv', 'http://cfc2017.test#');
+ld_dir ('dat', 'yagoStatistics.tsv', 'http://ygstat.cfc2017.test#');
+ld_dir ('dat', 'yagoFacts-h10k.ttl', 'http://ygfact.cfc2017.test#');
 rdf_loader_run ();
-
-SPARQL
-SELECT * 
-FROM <http://cfc2017.test#>
-WHERE 
-  {
-    ?s ?p ?o
-  }
-;
