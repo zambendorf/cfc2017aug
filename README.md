@@ -1,4 +1,4 @@
-# CFC Virtuosoハンズオン資料 (Aug 2017; @稲毛海岸) #
+## CFC Virtuosoハンズオン資料 (Aug 2017; @稲毛海岸) ##
 
 ## タイムテーブル ##
 
@@ -14,7 +14,7 @@
 * [AWS EC2文書](https://aws.amazon.com/jp/documentation/ec2/)
     * [SSH接続](http://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
 * [Virtuoso Open-Source Edition](http://vos.openlinksw.com/owiki/wiki/VOS/)
-    * [Bulk Loader](http://vos.openlinksw.com/owiki/wiki/VOS/VirtBulkRDFLoaderExampleSingle)
+    * [Bulk Loader](http://vos.openlinksw.com/owiki/wiki/VOS/VirtBulkRDFLoader)
 * [YAGO](http://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/yago-naga/yago/)
 * [SPARQLクエリ言語](http://www.asahi-net.or.jp/~ax2s-kmtn/internet/rdf/REC-sparql11-query-20130321.html)
 
@@ -79,7 +79,7 @@
     $ sudo ln -s /home/ec2-user/wrk/cfc2017aug/dat
 
     $ isql localhost:1111 dba dba
-    SQL>LOAD 'src/rdfloader.sql';
+    SQL> LOAD 'src/rdfloader.sql';
 
 * 続きは、src/laod-data.sql
 

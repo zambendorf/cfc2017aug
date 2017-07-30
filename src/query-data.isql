@@ -1,9 +1,34 @@
-SPARQL
-SELECT * 
-FROM <http://cfc2017.test#>
-WHERE 
-  {
-    ?s ?p ?o
-  }
-;
+SPARQL SELECT COUNT(*) FROM <http://ygstat.cfc2017.test#> WHERE { ?s ?p ?o };
+SPARQL SELECT COUNT(*) FROM <http://ygfact.cfc2017.test#> WHERE { ?s ?p ?o };
+SPARQL SELECT COUNT(*) FROM <http://ygtaxo.cfc2017.test#> WHERE { ?s ?p ?o };
 
+DELETE FROM DB.DBA.RDF_QUAD;
+
+SPARQL SELECT ?s, COUNT(*) AS ?c FROM <http://ygfact.cfc2017.test#> WHERE { ?s ?p ?o } GROUP BY ?s ORDER BY DESC(?c) LIMIT 30;
+SPARQL PREFIX : <http://yago-knowledge.org/resource/> SELECT * FROM <http://ygfact.cfc2017.test#> WHERE { :Genghis_Tron ?p ?o };
+SPARQL PREFIX : <http://yago-knowledge.org/resource/> SELECT * FROM <http://ygfact.cfc2017.test#> WHERE { :Konami ?p ?o };
+SPARQL PREFIX : <http://yago-knowledge.org/resource/> SELECT * FROM <http://ygtaxo.cfc2017.test#> WHERE { ?s ?p ?o } LIMIT 10;
+
+SPARQL SELECT ?o, COUNT(*) AS ?c FROM <http://ygfact.cfc2017.test#> WHERE { ?s ?p ?o } GROUP BY ?o ORDER BY DESC(?c) LIMIT 10;
+SPARQL PREFIX : <http://yago-knowledge.org/resource/> SELECT * FROM <http://ygfact.cfc2017.test#> WHERE { :Bolo_Airfield ?p1 ?o . `iri('http://yago-knowledge.org/resource/Glory_to_the_Filmmaker!')` ?p2 ?o };
+SPARQL PREFIX : <http://yago-knowledge.org/resource/> CONSTRUCT {?s rdf:type <http://ygfact.cfc2017.test#/JapaneseContents>} FROM <http://ygfact.cfc2017.test#> WHERE { ?s ?p :Japan } LIMIT 5;
+SPARQL PREFIX : <http://yago-knowledge.org/resource/> SELECT ?p COUNT(*) AS ?c FROM <http://ygfact.cfc2017.test#> WHERE { :United_States ?p ?o1 . :United_Kingdom ?p ?o2 } GROUP BY ?p ORDER by DESC(?c);
+SPARQL PREFIX : <http://yago-knowledge.org/resource/> SELECT DISTINCT ?s, ?o2 FROM <http://ygfact.cfc2017.test#> WHERE { ?s :participatedIn ?o1 OPTIONAL {?s :owns ?o2} } limit 5;
+SPARQL PREFIX : <http://yago-knowledge.org/resource/> SELECT ?s COUNT(*) AS ?c FROM <http://ygfact.cfc2017.test#> WHERE { ?s :owns ?o } GROUP BY ?s ORDER by DESC(?c) LIMIT 30;
+SPARQL PREFIX : <http://yago-knowledge.org/resource/> SELECT * FROM <http://ygfact.cfc2017.test#> WHERE {{:Google ?p ?o1} UNION {:Microsoft ?p ?o2}} LIMIT 5;
+
+SPARQL SELECT ?o, COUNT(*) AS ?c FROM <http://ygtaxo.cfc2017.test#> WHERE { ?s ?p ?o } GROUP BY ?o ORDER BY DESC(?c) LIMIT 10;
+SPARQL PREFIX : <http://yago-knowledge.org/resource/> SELECT ?p, COUNT(*) AS ?c FROM <http://ygtaxo.cfc2017.test#> WHERE { ?s ?p :wordnet_person_100007846 } GROUP BY ?p ORDER BY DESC(?c) LIMIT 10;
+SPARQL PREFIX : <http://yago-knowledge.org/resource/> SELECT ?o, COUNT(*) AS ?c FROM <http://ygtaxo.cfc2017.test#> WHERE { ?s rdfs:subClassOf :wordnet_person_100007846 . ?s rdfs:subClassOf ?o } GROUP BY ?o ORDER BY DESC(?c) LIMIT 10;
+SPARQL PREFIX : <http://yago-knowledge.org/resource/> SELECT ?o, COUNT(*) AS ?c FROM <http://ygtaxo.cfc2017.test#> WHERE { ?s rdfs:subClassOf :wordnet_person_100007846 . ?s rdfs:subClassOf* ?o } GROUP BY ?o ORDER BY DESC(?c) LIMIT 10;
+SPARQL PREFIX : <http://yago-knowledge.org/resource/> SELECT * FROM <http://ygtaxo.cfc2017.test#> WHERE { ?s rdfs:subClassOf :wordnet_person_100007846 } LIMIT 10;
+
+SPARQL SELECT ?p, COUNT(*) AS ?c FROM <http://ygfact.cfc2017.test#> WHERE { ?s ?p ?o } GROUP BY ?p ORDER BY DESC(?c) LIMIT 5;
+SPARQL PREFIX : <http://yago-knowledge.org/resource/> SELECT ?o, COUNT(*) FROM <http://ygfact.cfc2017.test#> WHERE { ?s2 :wasBornIn ?o . { SELECT ?o, COUNT(*) AS ?c FROM <http://ygfact.cfc2017.test#> WHERE { ?s :livesIn ?o } GROUP BY ?o ORDER BY DESC(?c) LIMIT 14}} GROUP BY ?o;
+
+SPARQL PREFIX : <http://yago-knowledge.org/resource/> SELECT ?src, ?p, COUNT(*) AS ?c FROM NAMED <http://ygfact.cfc2017.test#> FROM NAMED <http://ygtaxo.cfc2017.test#> WHERE {GRAPH ?src { ?s ?p ?o}} GROUP BY ?src ?p ORDER BY DESC(?c) LIMIT 5 ;
+SPARQL PREFIX : <http://yago-knowledge.org/resource/> SELECT ?src, ?p, COUNT(*) AS ?c FROM NAMED <http://ygfact.cfc2017.test#> FROM NAMED <http://ygtaxo.cfc2017.test#> WHERE {GRAPH ?src { ?s ?p ?o}} GROUP BY ?src ?p ORDER BY DESC(?c) LIMIT 5 OFFSET 5;
+
+SPARQL PREFIX : <http://yago-knowledge.org/resource/> SELECT COUNT(*) FROM <http://ygfact.cfc2017.test#> { :Japan ?p ?o2 };
+SPARQL PREFIX : <http://yago-knowledge.org/resource/> ASK FROM <http://ygfact.cfc2017.test#> { ?s1 ?p1 :United_States . :United_States ?p2 ?o2 };
+SPARQL PREFIX : <http://yago-knowledge.org/resource/> ASK FROM <http://ygfact.cfc2017.test#> { ?s rdf:type ?o };

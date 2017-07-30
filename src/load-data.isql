@@ -1,3 +1,7 @@
-ld_dir ('dat', 'yagoStatistics.tsv', 'http://ygstat.cfc2017.test#');
-ld_dir ('dat', 'yagoFacts-h10k.ttl', 'http://ygfact.cfc2017.test#');
+delete from DB.DBA.load_list;
+ld_dir ('dat', 'yagoStatistics.ttl', 'http://ygstat.cfc2017.test#');
+ld_dir ('dat', 'yagoFacts-h200k.ttl', 'http://ygfact.cfc2017.test#');
+ld_dir ('dat', 'yagoTaxonomy.ttl', 'http://ygtaxo.cfc2017.test#');
 rdf_loader_run ();
+select * from DB.DBA.load_list;
+
